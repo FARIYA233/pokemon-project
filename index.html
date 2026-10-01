@@ -1,0 +1,718 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Pokémon Nexus | Intelligence Explorer</title>
+
+    <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+
+<!-- =========================
+     BACKGROUND
+========================= -->
+<div class="background-glow glow-one"></div>
+<div class="background-glow glow-two"></div>
+
+
+<!-- =========================
+     HEADER
+========================= -->
+<header class="top-header">
+
+    <div class="brand-area">
+
+        <div class="brand-logo">
+            <span>◉</span>
+        </div>
+
+        <div>
+            <h1>POKÉMON <span>NEXUS</span></h1>
+            <p>Intelligence • Analysis • Discovery</p>
+        </div>
+
+    </div>
+
+    <div class="api-status" id="apiStatus">
+        <span class="status-dot"></span>
+        PokéAPI CONNECTED
+    </div>
+
+</header>
+
+
+<main class="container">
+
+
+<!-- =========================
+     HERO
+========================= -->
+<section class="hero">
+
+    <div class="hero-content">
+
+        <div class="hero-badge">
+            POKÉDEX // INTELLIGENCE EXPLORER
+        </div>
+
+        <h2>
+            Explore the world of
+            <span>Pokémon</span>
+        </h2>
+
+        <p>
+            Search, analyze, compare and discover detailed Pokémon
+            information powered by PokéAPI.
+        </p>
+
+    </div>
+
+</section>
+
+
+<!-- =========================
+     SEARCH
+========================= -->
+<section class="search-section">
+
+    <form id="searchForm">
+
+        <div class="search-box">
+
+            <span class="search-icon">⌕</span>
+
+            <input
+                type="text"
+                id="pokemonInput"
+                placeholder="Search Pokémon name or ID..."
+                autocomplete="off"
+            >
+
+            <button type="submit" class="search-button">
+                SEARCH
+            </button>
+
+        </div>
+
+    </form>
+
+    <div class="quick-search">
+
+        <span>Quick Search:</span>
+
+        <button class="quick-btn" data-pokemon="pikachu">
+            Pikachu
+        </button>
+
+        <button class="quick-btn" data-pokemon="charizard">
+            Charizard
+        </button>
+
+        <button class="quick-btn" data-pokemon="bulbasaur">
+            Bulbasaur
+        </button>
+
+        <button class="quick-btn" data-pokemon="mewtwo">
+            Mewtwo
+        </button>
+
+        <button class="quick-btn" data-pokemon="gengar">
+            Gengar
+        </button>
+
+    </div>
+
+</section>
+
+
+<!-- =========================
+     TOOLBAR
+========================= -->
+<section class="toolbar">
+
+    <button id="randomBtn" class="tool-btn">
+        🎲 Random
+    </button>
+
+    <button id="favoriteBtn" class="tool-btn">
+        ♡ Favorite
+    </button>
+
+    <button id="copyBtn" class="tool-btn">
+        📋 Copy
+    </button>
+
+    <button id="shareBtn" class="tool-btn">
+        🔗 Share
+    </button>
+
+    <button id="cryBtn" class="tool-btn">
+        🔊 Cry
+    </button>
+
+    <button id="spriteBtn" class="tool-btn">
+        ✨ Shiny
+    </button>
+
+    <button id="compareBtn" class="tool-btn">
+        ⚖ Compare
+    </button>
+
+    <button id="refreshBtn" class="tool-btn">
+        ↻ Refresh
+    </button>
+
+</section>
+
+
+<!-- =========================
+     STATUS
+========================= -->
+<div id="status" class="status-message">
+    Ready to explore Pokémon.
+</div>
+
+
+<!-- =========================
+     LOADING
+========================= -->
+<div id="loading" class="loading-screen hidden">
+
+    <div class="pokeball-loader"></div>
+
+    <h3>ANALYZING DATA...</h3>
+
+    <p>
+        Connecting to PokéAPI
+    </p>
+
+</div>
+
+
+<!-- =========================
+     EMPTY STATE
+========================= -->
+<section id="emptyState" class="empty-state">
+
+    <div class="empty-icon">
+        ◉
+    </div>
+
+    <h2>Start Your Exploration</h2>
+
+    <p>
+        Search for a Pokémon to view detailed intelligence,
+        statistics, evolution data and type analysis.
+    </p>
+
+</section>
+
+
+<!-- =========================
+     MAIN POKEMON AREA
+========================= -->
+<section id="pokemonArea" class="pokemon-area hidden">
+
+
+<!-- =========================
+     POKEMON HERO CARD
+========================= -->
+<div class="main-grid">
+
+    <article class="pokemon-card glass-card">
+
+        <div class="card-top">
+
+            <span id="pokemonId" class="pokemon-id">
+                #0000
+            </span>
+
+            <button id="detailsBtn" class="small-action">
+                Details
+            </button>
+
+        </div>
+
+
+        <div class="pokemon-visual">
+
+            <div class="image-glow"></div>
+
+            <img
+                id="pokemonImage"
+                src=""
+                alt="Pokémon"
+            >
+
+        </div>
+
+
+        <div class="pokemon-main-info">
+
+            <h2 id="pokemonName">
+                Pokémon
+            </h2>
+
+            <p id="pokemonSubtitle">
+                Pokémon Species
+            </p>
+
+            <div id="pokemonType" class="type-container"></div>
+
+        </div>
+
+
+        <div class="pokemon-basic-grid">
+
+            <div class="basic-item">
+                <span>HEIGHT</span>
+                <strong id="pokemonHeight">-</strong>
+            </div>
+
+            <div class="basic-item">
+                <span>WEIGHT</span>
+                <strong id="pokemonWeight">-</strong>
+            </div>
+
+            <div class="basic-item">
+                <span>BASE EXP</span>
+                <strong id="baseExperience">-</strong>
+            </div>
+
+        </div>
+
+
+        <div class="abilities-section">
+
+            <h3>ABILITIES</h3>
+
+            <div id="abilities" class="abilities-container"></div>
+
+        </div>
+
+
+        <div id="badges" class="badges-container"></div>
+
+    </article>
+
+
+<!-- =========================
+     INTELLIGENCE
+========================= -->
+<article class="intelligence-card glass-card">
+
+    <div class="section-heading">
+
+        <div>
+            <span class="section-label">
+                ANALYTICS
+            </span>
+
+            <h2>Pokémon Intelligence</h2>
+        </div>
+
+        <div class="score-circle" id="scoreCircle">
+            <span id="powerScore">0</span>
+            <small>SCORE</small>
+        </div>
+
+    </div>
+
+
+    <div class="analytics-grid">
+
+        <div class="analytics-box">
+            <span>TOTAL STATS</span>
+            <strong id="totalStats">0</strong>
+        </div>
+
+        <div class="analytics-box">
+            <span>AVERAGE</span>
+            <strong id="averageStats">0</strong>
+        </div>
+
+        <div class="analytics-box">
+            <span>HIGHEST</span>
+            <strong id="highestStat">-</strong>
+        </div>
+
+        <div class="analytics-box">
+            <span>LOWEST</span>
+            <strong id="lowestStat">-</strong>
+        </div>
+
+    </div>
+
+
+    <div class="sub-section">
+
+        <div class="sub-title">
+            BASE STAT DISTRIBUTION
+        </div>
+
+        <div id="statsContainer" class="stats-container"></div>
+
+    </div>
+
+
+    <!-- Radar -->
+    <div class="radar-wrapper">
+
+        <div class="sub-title">
+            STAT RADAR
+        </div>
+
+        <svg
+            id="radarChart"
+            viewBox="0 0 300 300"
+            class="radar-chart"
+        >
+
+            <polygon
+                id="radarGrid"
+                points=""
+                class="radar-grid"
+            ></polygon>
+
+            <polygon
+                id="radarData"
+                points=""
+                class="radar-data"
+            ></polygon>
+
+        </svg>
+
+    </div>
+
+</article>
+
+</div>
+
+
+<!-- =========================
+     TYPE EFFECTIVENESS
+========================= -->
+<section class="dashboard-section glass-card">
+
+    <div class="section-heading">
+
+        <div>
+            <span class="section-label">
+                BATTLE ANALYSIS
+            </span>
+
+            <h2>Type Effectiveness</h2>
+        </div>
+
+    </div>
+
+
+    <div class="effectiveness-grid">
+
+        <div class="effect-box weakness-box">
+
+            <h3>⚠ Weaknesses</h3>
+
+            <div id="weaknesses" class="effect-list">
+                -
+            </div>
+
+        </div>
+
+
+        <div class="effect-box resistance-box">
+
+            <h3>✓ Resistances</h3>
+
+            <div id="resistances" class="effect-list">
+                -
+            </div>
+
+        </div>
+
+
+        <div class="effect-box immunity-box">
+
+            <h3>◈ Immunities</h3>
+
+            <div id="immunities" class="effect-list">
+                -
+            </div>
+
+        </div>
+
+    </div>
+
+</section>
+
+
+<!-- =========================
+     SPECIES PROFILE
+========================= -->
+<section id="detailsPanel" class="dashboard-section glass-card hidden">
+
+    <div class="section-heading">
+
+        <div>
+            <span class="section-label">
+                SPECIES DATABASE
+            </span>
+
+            <h2>Species Profile</h2>
+        </div>
+
+    </div>
+
+
+    <div class="description-box">
+
+        <p id="description">
+            Pokémon description...
+        </p>
+
+    </div>
+
+
+    <div class="species-grid">
+
+        <div class="species-item">
+            <span>GENERATION</span>
+            <strong id="generation">-</strong>
+        </div>
+
+        <div class="species-item">
+            <span>HABITAT</span>
+            <strong id="habitat">-</strong>
+        </div>
+
+        <div class="species-item">
+            <span>CAPTURE RATE</span>
+            <strong id="captureRate">-</strong>
+        </div>
+
+        <div class="species-item">
+            <span>HAPPINESS</span>
+            <strong id="happiness">-</strong>
+        </div>
+
+        <div class="species-item">
+            <span>GROWTH RATE</span>
+            <strong id="growthRate">-</strong>
+        </div>
+
+        <div class="species-item">
+            <span>SPECIES COLOR</span>
+            <strong id="speciesColor">-</strong>
+        </div>
+
+        <div class="species-item">
+            <span>GENDER RATIO</span>
+            <strong id="genderRatio">-</strong>
+        </div>
+
+        <div class="species-item">
+            <span>EGG GROUPS</span>
+            <strong id="eggGroups">-</strong>
+        </div>
+
+    </div>
+
+</section>
+
+
+<!-- =========================
+     EVOLUTION
+========================= -->
+<section class="dashboard-section glass-card">
+
+    <div class="section-heading">
+
+        <div>
+            <span class="section-label">
+                EVOLUTION DATABASE
+            </span>
+
+            <h2>Evolution Chain</h2>
+        </div>
+
+    </div>
+
+    <div id="evolutionChain" class="evolution-chain">
+        Loading evolution data...
+    </div>
+
+</section>
+
+
+<!-- =========================
+     HISTORY / FAVORITES
+========================= -->
+<section class="two-column-section">
+
+
+    <article class="side-card glass-card">
+
+        <div class="side-header">
+
+            <div>
+                <span class="section-label">
+                    RECENT
+                </span>
+
+                <h2>Search History</h2>
+            </div>
+
+            <button id="clearHistoryBtn">
+                Clear
+            </button>
+
+        </div>
+
+        <div id="historyList" class="list-container"></div>
+
+    </article>
+
+
+    <article class="side-card glass-card">
+
+        <div class="side-header">
+
+            <div>
+                <span class="section-label">
+                    COLLECTION
+                </span>
+
+                <h2>Favorites</h2>
+            </div>
+
+            <button id="clearFavoritesBtn">
+                Clear
+            </button>
+
+        </div>
+
+        <div id="favoritesList" class="list-container"></div>
+
+    </article>
+
+</section>
+
+
+<!-- =========================
+     COMPARE
+========================= -->
+<section id="comparePanel" class="dashboard-section glass-card hidden">
+
+    <div class="section-heading">
+
+        <div>
+            <span class="section-label">
+                COMPARISON ENGINE
+            </span>
+
+            <h2>Pokémon Comparison</h2>
+        </div>
+
+    </div>
+
+
+    <div class="compare-search">
+
+        <input
+            id="compareInput"
+            type="text"
+            placeholder="Enter another Pokémon..."
+        >
+
+        <button id="compareSearchBtn">
+            COMPARE
+        </button>
+
+    </div>
+
+
+    <div id="compareResult" class="compare-result"></div>
+
+</section>
+
+
+<!-- =========================
+     API VIEWER
+========================= -->
+<section id="apiPanel" class="dashboard-section glass-card hidden">
+
+    <div class="section-heading">
+
+        <div>
+            <span class="section-label">
+                DEVELOPER MODE
+            </span>
+
+            <h2>PokéAPI Response</h2>
+        </div>
+
+    </div>
+
+    <pre id="apiResponse"></pre>
+
+</section>
+
+
+</section>
+
+
+<!-- =========================
+     DASHBOARD FOOTER
+========================= -->
+<section class="mini-dashboard">
+
+    <div class="mini-stat">
+        <span>SEARCHES</span>
+        <strong id="searchCount">0</strong>
+    </div>
+
+    <div class="mini-stat">
+        <span>FAVORITES</span>
+        <strong id="favoriteCount">0</strong>
+    </div>
+
+    <div class="mini-stat">
+        <span>COMPARES</span>
+        <strong id="compareCount">0</strong>
+    </div>
+
+    <div class="mini-stat">
+        <span>DATA SOURCE</span>
+        <strong>PokéAPI</strong>
+    </div>
+
+</section>
+
+
+</main>
+
+
+<!-- =========================
+     FOOTER
+========================= -->
+<footer>
+
+    <div class="footer-brand">
+        <strong>POKÉMON NEXUS</strong>
+        <span>Interactive Intelligence Explorer</span>
+    </div>
+
+    <p>
+        Powered by PokéAPI • Built with HTML, CSS & JavaScript
+    </p>
+
+</footer>
+
+
+<script src="script.js"></script>
+
+</body>
+</html>

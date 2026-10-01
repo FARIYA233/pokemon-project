@@ -1,0 +1,1945 @@
+/* =========================================================
+   POKEMON NEXUS
+   PROFESSIONAL DARK UI
+========================================================= */
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+:root {
+
+    --bg: #060914;
+    --bg-soft: #0a1020;
+
+    --card: rgba(14, 22, 40, 0.78);
+    --card-2: rgba(18, 28, 50, 0.9);
+
+    --border: rgba(255,255,255,0.09);
+
+    --cyan: #39d7ff;
+    --cyan-soft: rgba(57,215,255,0.15);
+
+    --violet: #8b5cf6;
+    --violet-soft: rgba(139,92,246,0.15);
+
+    --green: #35e59a;
+    --yellow: #ffd166;
+    --red: #ff5c7a;
+
+    --text: #f8fafc;
+    --muted: #94a3b8;
+    --dark-muted: #64748b;
+
+    --radius: 22px;
+}
+
+html {
+    scroll-behavior: smooth;
+}
+
+body {
+
+    min-height: 100vh;
+
+    background:
+        radial-gradient(
+            circle at 10% 10%,
+            rgba(57,215,255,0.08),
+            transparent 30%
+        ),
+        radial-gradient(
+            circle at 90% 20%,
+            rgba(139,92,246,0.08),
+            transparent 30%
+        ),
+        var(--bg);
+
+    color: var(--text);
+
+    font-family:
+        Inter,
+        "Segoe UI",
+        Arial,
+        sans-serif;
+
+    line-height: 1.6;
+
+    overflow-x: hidden;
+}
+
+
+/* =========================================================
+   BACKGROUND
+========================================================= */
+
+.background-glow {
+
+    position: fixed;
+
+    width: 400px;
+    height: 400px;
+
+    border-radius: 50%;
+
+    filter: blur(120px);
+
+    pointer-events: none;
+
+    opacity: 0.18;
+
+    z-index: -1;
+}
+
+.glow-one {
+
+    background: var(--cyan);
+
+    top: -200px;
+    left: -150px;
+}
+
+.glow-two {
+
+    background: var(--violet);
+
+    right: -200px;
+    bottom: -200px;
+}
+
+
+/* =========================================================
+   HEADER
+========================================================= */
+
+.top-header {
+
+    width: 100%;
+
+    min-height: 82px;
+
+    display: flex;
+
+    align-items: center;
+
+    justify-content: space-between;
+
+    padding: 18px 6%;
+
+    border-bottom: 1px solid var(--border);
+
+    background: rgba(6,9,20,0.78);
+
+    backdrop-filter: blur(18px);
+
+    position: sticky;
+
+    top: 0;
+
+    z-index: 100;
+}
+
+.brand-area {
+
+    display: flex;
+
+    align-items: center;
+
+    gap: 13px;
+}
+
+.brand-logo {
+
+    width: 42px;
+    height: 42px;
+
+    border-radius: 50%;
+
+    display: flex;
+
+    justify-content: center;
+
+    align-items: center;
+
+    color: var(--cyan);
+
+    border: 1px solid var(--cyan);
+
+    box-shadow:
+        0 0 25px rgba(57,215,255,0.25);
+
+    font-size: 22px;
+}
+
+.brand-area h1 {
+
+    font-size: 19px;
+
+    letter-spacing: 2px;
+}
+
+.brand-area h1 span {
+
+    color: var(--cyan);
+}
+
+.brand-area p {
+
+    font-size: 11px;
+
+    color: var(--muted);
+
+    letter-spacing: 1px;
+}
+
+.api-status {
+
+    display: flex;
+
+    align-items: center;
+
+    gap: 8px;
+
+    font-size: 12px;
+
+    color: var(--muted);
+
+    padding: 9px 14px;
+
+    border: 1px solid var(--border);
+
+    border-radius: 50px;
+
+    background: rgba(255,255,255,0.03);
+}
+
+.status-dot {
+
+    width: 8px;
+    height: 8px;
+
+    background: var(--green);
+
+    border-radius: 50%;
+
+    box-shadow: 0 0 10px var(--green);
+}
+
+
+/* =========================================================
+   CONTAINER
+========================================================= */
+
+.container {
+
+    width: min(1200px, 92%);
+
+    margin: auto;
+}
+
+
+/* =========================================================
+   HERO
+========================================================= */
+
+.hero {
+
+    padding: 70px 0 35px;
+
+    text-align: center;
+}
+
+.hero-badge {
+
+    display: inline-block;
+
+    padding: 8px 15px;
+
+    border-radius: 50px;
+
+    border: 1px solid rgba(57,215,255,0.25);
+
+    background: var(--cyan-soft);
+
+    color: var(--cyan);
+
+    font-size: 11px;
+
+    letter-spacing: 2px;
+
+    margin-bottom: 20px;
+}
+
+.hero h2 {
+
+    font-size: clamp(34px, 5vw, 62px);
+
+    line-height: 1.1;
+
+    letter-spacing: -2px;
+
+    margin-bottom: 18px;
+}
+
+.hero h2 span {
+
+    background:
+        linear-gradient(
+            90deg,
+            var(--cyan),
+            var(--violet)
+        );
+
+    -webkit-background-clip: text;
+
+    background-clip: text;
+
+    color: transparent;
+}
+
+.hero p {
+
+    max-width: 620px;
+
+    margin: auto;
+
+    color: var(--muted);
+
+    font-size: 15px;
+}
+
+
+/* =========================================================
+   SEARCH
+========================================================= */
+
+.search-section {
+
+    margin: 15px 0 20px;
+}
+
+.search-box {
+
+    display: flex;
+
+    align-items: center;
+
+    padding: 7px;
+
+    border-radius: 18px;
+
+    border: 1px solid var(--border);
+
+    background: rgba(255,255,255,0.035);
+
+    box-shadow:
+        0 20px 60px rgba(0,0,0,0.2);
+}
+
+.search-icon {
+
+    font-size: 28px;
+
+    color: var(--cyan);
+
+    margin-left: 16px;
+}
+
+.search-box input {
+
+    flex: 1;
+
+    background: transparent;
+
+    border: none;
+
+    outline: none;
+
+    color: white;
+
+    font-size: 15px;
+
+    padding: 16px;
+
+    min-width: 0;
+}
+
+.search-box input::placeholder {
+
+    color: var(--dark-muted);
+}
+
+.search-button {
+
+    border: none;
+
+    border-radius: 13px;
+
+    padding: 13px 23px;
+
+    background:
+        linear-gradient(
+            135deg,
+            var(--cyan),
+            #5b9dff
+        );
+
+    color: #031018;
+
+    font-weight: 800;
+
+    cursor: pointer;
+
+    transition: 0.25s;
+}
+
+.search-button:hover {
+
+    transform: translateY(-2px);
+
+    box-shadow:
+        0 10px 30px rgba(57,215,255,0.25);
+}
+
+.quick-search {
+
+    display: flex;
+
+    flex-wrap: wrap;
+
+    align-items: center;
+
+    gap: 8px;
+
+    margin-top: 13px;
+
+    color: var(--dark-muted);
+
+    font-size: 12px;
+}
+
+.quick-btn {
+
+    border: 1px solid var(--border);
+
+    background: rgba(255,255,255,0.03);
+
+    color: var(--muted);
+
+    padding: 7px 12px;
+
+    border-radius: 50px;
+
+    cursor: pointer;
+
+    transition: 0.2s;
+}
+
+.quick-btn:hover {
+
+    color: var(--cyan);
+
+    border-color: rgba(57,215,255,0.3);
+
+    background: var(--cyan-soft);
+}
+
+
+/* =========================================================
+   TOOLBAR
+========================================================= */
+
+.toolbar {
+
+    display: flex;
+
+    flex-wrap: wrap;
+
+    gap: 8px;
+
+    margin: 18px 0;
+}
+
+.tool-btn {
+
+    border: 1px solid var(--border);
+
+    background: rgba(255,255,255,0.035);
+
+    color: var(--muted);
+
+    padding: 9px 13px;
+
+    border-radius: 11px;
+
+    cursor: pointer;
+
+    font-size: 12px;
+
+    transition: 0.25s;
+}
+
+.tool-btn:hover {
+
+    color: var(--text);
+
+    border-color: rgba(57,215,255,0.3);
+
+    transform: translateY(-2px);
+
+    background: var(--cyan-soft);
+}
+
+
+/* =========================================================
+   STATUS
+========================================================= */
+
+.status-message {
+
+    padding: 11px 15px;
+
+    margin: 12px 0;
+
+    color: var(--muted);
+
+    font-size: 13px;
+
+    border-left: 3px solid var(--cyan);
+
+    background: rgba(57,215,255,0.04);
+
+    border-radius: 5px;
+}
+
+
+/* =========================================================
+   EMPTY / LOADING
+========================================================= */
+
+.empty-state {
+
+    min-height: 300px;
+
+    display: flex;
+
+    align-items: center;
+
+    justify-content: center;
+
+    flex-direction: column;
+
+    text-align: center;
+
+    padding: 40px;
+}
+
+.empty-icon {
+
+    width: 80px;
+    height: 80px;
+
+    display: flex;
+
+    align-items: center;
+    justify-content: center;
+
+    border: 1px solid var(--border);
+
+    border-radius: 50%;
+
+    color: var(--cyan);
+
+    font-size: 35px;
+
+    margin-bottom: 20px;
+
+    box-shadow:
+        0 0 50px rgba(57,215,255,0.08);
+}
+
+.empty-state h2 {
+
+    margin-bottom: 8px;
+}
+
+.empty-state p {
+
+    color: var(--muted);
+
+    max-width: 500px;
+
+    font-size: 14px;
+}
+
+.loading-screen {
+
+    text-align: center;
+
+    padding: 60px;
+}
+
+.loading-screen h3 {
+
+    margin-top: 20px;
+
+    color: var(--cyan);
+
+    letter-spacing: 2px;
+}
+
+.loading-screen p {
+
+    color: var(--muted);
+
+    font-size: 13px;
+}
+
+.pokeball-loader {
+
+    width: 55px;
+    height: 55px;
+
+    border: 4px solid rgba(255,255,255,0.1);
+
+    border-top-color: var(--cyan);
+
+    border-right-color: var(--violet);
+
+    border-radius: 50%;
+
+    margin: auto;
+
+    animation: spin 0.8s linear infinite;
+}
+
+@keyframes spin {
+
+    to {
+        transform: rotate(360deg);
+    }
+}
+
+
+/* =========================================================
+   GLASS CARDS
+========================================================= */
+
+.glass-card {
+
+    background:
+        linear-gradient(
+            145deg,
+            rgba(255,255,255,0.055),
+            rgba(255,255,255,0.018)
+        );
+
+    border: 1px solid var(--border);
+
+    border-radius: var(--radius);
+
+    backdrop-filter: blur(15px);
+
+    box-shadow:
+        0 25px 80px rgba(0,0,0,0.18);
+}
+
+
+/* =========================================================
+   MAIN GRID
+========================================================= */
+
+.main-grid {
+
+    display: grid;
+
+    grid-template-columns:
+        minmax(300px, 0.8fr)
+        minmax(450px, 1.2fr);
+
+    gap: 18px;
+
+    margin-top: 22px;
+}
+
+
+/* =========================================================
+   POKEMON CARD
+========================================================= */
+
+.pokemon-card {
+
+    padding: 24px;
+
+    position: relative;
+
+    overflow: hidden;
+}
+
+.card-top {
+
+    display: flex;
+
+    justify-content: space-between;
+
+    align-items: center;
+}
+
+.pokemon-id {
+
+    color: var(--cyan);
+
+    font-size: 13px;
+
+    font-weight: 700;
+
+    letter-spacing: 1px;
+}
+
+.small-action {
+
+    border: 1px solid var(--border);
+
+    background: rgba(255,255,255,0.03);
+
+    color: var(--muted);
+
+    padding: 7px 11px;
+
+    border-radius: 9px;
+
+    cursor: pointer;
+}
+
+.small-action:hover {
+
+    color: var(--cyan);
+}
+
+.pokemon-visual {
+
+    height: 330px;
+
+    display: flex;
+
+    justify-content: center;
+
+    align-items: center;
+
+    position: relative;
+}
+
+.pokemon-visual img {
+
+    width: 260px;
+    height: 260px;
+
+    object-fit: contain;
+
+    position: relative;
+
+    z-index: 2;
+
+    filter:
+        drop-shadow(
+            0 25px 25px rgba(0,0,0,0.4)
+        );
+
+    animation: floatPokemon 4s ease-in-out infinite;
+}
+
+@keyframes floatPokemon {
+
+    0%,100% {
+        transform: translateY(0);
+    }
+
+    50% {
+        transform: translateY(-8px);
+    }
+}
+
+.image-glow {
+
+    position: absolute;
+
+    width: 220px;
+    height: 220px;
+
+    border-radius: 50%;
+
+    background:
+        radial-gradient(
+            circle,
+            rgba(57,215,255,0.2),
+            transparent 65%
+        );
+
+    filter: blur(10px);
+}
+
+.pokemon-main-info {
+
+    text-align: center;
+}
+
+.pokemon-main-info h2 {
+
+    font-size: 34px;
+
+    text-transform: capitalize;
+
+    margin-bottom: 2px;
+}
+
+.pokemon-main-info p {
+
+    color: var(--muted);
+
+    font-size: 13px;
+
+    text-transform: capitalize;
+}
+
+.type-container {
+
+    display: flex;
+
+    justify-content: center;
+
+    flex-wrap: wrap;
+
+    gap: 8px;
+
+    margin-top: 13px;
+}
+
+.type-pill {
+
+    padding: 5px 13px;
+
+    border-radius: 50px;
+
+    color: white;
+
+    font-size: 11px;
+
+    font-weight: 700;
+
+    text-transform: uppercase;
+
+    letter-spacing: 1px;
+
+    box-shadow:
+        0 5px 15px rgba(0,0,0,0.15);
+}
+
+.pokemon-basic-grid {
+
+    display: grid;
+
+    grid-template-columns: repeat(3, 1fr);
+
+    margin-top: 25px;
+
+    border-top: 1px solid var(--border);
+
+    border-bottom: 1px solid var(--border);
+}
+
+.basic-item {
+
+    padding: 15px 8px;
+
+    text-align: center;
+
+    border-right: 1px solid var(--border);
+}
+
+.basic-item:last-child {
+
+    border-right: none;
+}
+
+.basic-item span {
+
+    display: block;
+
+    font-size: 9px;
+
+    color: var(--dark-muted);
+
+    letter-spacing: 1px;
+}
+
+.basic-item strong {
+
+    display: block;
+
+    margin-top: 3px;
+
+    font-size: 14px;
+}
+
+.abilities-section {
+
+    margin-top: 20px;
+}
+
+.abilities-section h3 {
+
+    font-size: 10px;
+
+    letter-spacing: 2px;
+
+    color: var(--dark-muted);
+
+    margin-bottom: 9px;
+}
+
+.abilities-container {
+
+    display: flex;
+
+    flex-wrap: wrap;
+
+    gap: 7px;
+}
+
+.ability {
+
+    padding: 6px 10px;
+
+    border: 1px solid var(--border);
+
+    border-radius: 8px;
+
+    color: var(--muted);
+
+    font-size: 11px;
+
+    text-transform: capitalize;
+
+    background: rgba(255,255,255,0.025);
+}
+
+.badges-container {
+
+    display: flex;
+
+    flex-wrap: wrap;
+
+    gap: 7px;
+
+    margin-top: 17px;
+}
+
+.pokemon-badge {
+
+    padding: 5px 9px;
+
+    border-radius: 7px;
+
+    background: var(--violet-soft);
+
+    border: 1px solid rgba(139,92,246,0.25);
+
+    color: #c4b5fd;
+
+    font-size: 10px;
+
+    font-weight: 700;
+}
+
+
+/* =========================================================
+   INTELLIGENCE
+========================================================= */
+
+.intelligence-card {
+
+    padding: 25px;
+}
+
+.section-heading {
+
+    display: flex;
+
+    justify-content: space-between;
+
+    align-items: center;
+
+    gap: 15px;
+
+    margin-bottom: 20px;
+}
+
+.section-label {
+
+    color: var(--cyan);
+
+    font-size: 9px;
+
+    letter-spacing: 2px;
+
+    font-weight: 800;
+}
+
+.section-heading h2 {
+
+    font-size: 22px;
+
+    margin-top: 2px;
+}
+
+.score-circle {
+
+    width: 76px;
+    height: 76px;
+
+    border-radius: 50%;
+
+    display: flex;
+
+    align-items: center;
+
+    justify-content: center;
+
+    flex-direction: column;
+
+    background:
+        conic-gradient(
+            var(--cyan) 0deg,
+            var(--violet) 220deg,
+            rgba(255,255,255,0.06) 220deg
+        );
+
+    position: relative;
+
+    font-weight: 800;
+}
+
+.score-circle::after {
+
+    content: "";
+
+    position: absolute;
+
+    inset: 5px;
+
+    border-radius: 50%;
+
+    background: var(--bg-soft);
+
+    z-index: 0;
+}
+
+.score-circle span,
+.score-circle small {
+
+    position: relative;
+
+    z-index: 1;
+}
+
+.score-circle span {
+
+    font-size: 18px;
+}
+
+.score-circle small {
+
+    font-size: 7px;
+
+    color: var(--muted);
+
+    letter-spacing: 1px;
+}
+
+.analytics-grid {
+
+    display: grid;
+
+    grid-template-columns: repeat(4,1fr);
+
+    gap: 9px;
+
+    margin-bottom: 25px;
+}
+
+.analytics-box {
+
+    padding: 14px 10px;
+
+    border: 1px solid var(--border);
+
+    background: rgba(255,255,255,0.025);
+
+    border-radius: 12px;
+
+    text-align: center;
+}
+
+.analytics-box span {
+
+    display: block;
+
+    font-size: 8px;
+
+    color: var(--dark-muted);
+
+    letter-spacing: 1px;
+}
+
+.analytics-box strong {
+
+    display: block;
+
+    margin-top: 5px;
+
+    font-size: 15px;
+
+    text-transform: capitalize;
+}
+
+.sub-section {
+
+    margin-top: 10px;
+}
+
+.sub-title {
+
+    color: var(--dark-muted);
+
+    font-size: 9px;
+
+    letter-spacing: 2px;
+
+    font-weight: 800;
+
+    margin-bottom: 12px;
+}
+
+.stat-row {
+
+    display: grid;
+
+    grid-template-columns: 90px 1fr 40px;
+
+    gap: 10px;
+
+    align-items: center;
+
+    margin: 11px 0;
+}
+
+.stat-name {
+
+    color: var(--muted);
+
+    font-size: 10px;
+
+    text-transform: uppercase;
+}
+
+.stat-value {
+
+    text-align: right;
+
+    font-size: 11px;
+
+    font-weight: 700;
+}
+
+.stat-track {
+
+    height: 7px;
+
+    background: rgba(255,255,255,0.06);
+
+    border-radius: 20px;
+
+    overflow: hidden;
+}
+
+.stat-fill {
+
+    height: 100%;
+
+    width: 0;
+
+    border-radius: inherit;
+
+    background:
+        linear-gradient(
+            90deg,
+            var(--cyan),
+            var(--violet)
+        );
+
+    transition:
+        width 1s cubic-bezier(.2,.8,.2,1);
+}
+
+.radar-wrapper {
+
+    margin-top: 22px;
+
+    text-align: center;
+}
+
+.radar-chart {
+
+    width: 280px;
+
+    max-width: 100%;
+
+    height: 280px;
+
+    overflow: visible;
+}
+
+.radar-grid {
+
+    fill: rgba(57,215,255,0.025);
+
+    stroke: rgba(148,163,184,0.18);
+
+    stroke-width: 1;
+}
+
+.radar-data {
+
+    fill: rgba(57,215,255,0.18);
+
+    stroke: var(--cyan);
+
+    stroke-width: 2;
+}
+
+
+/* =========================================================
+   DASHBOARD SECTIONS
+========================================================= */
+
+.dashboard-section {
+
+    padding: 25px;
+
+    margin-top: 18px;
+}
+
+.effectiveness-grid {
+
+    display: grid;
+
+    grid-template-columns: repeat(3,1fr);
+
+    gap: 12px;
+}
+
+.effect-box {
+
+    padding: 18px;
+
+    border-radius: 15px;
+
+    border: 1px solid var(--border);
+
+    min-height: 130px;
+}
+
+.effect-box h3 {
+
+    font-size: 12px;
+
+    margin-bottom: 13px;
+}
+
+.weakness-box {
+
+    background: rgba(255,92,122,0.04);
+}
+
+.resistance-box {
+
+    background: rgba(53,229,154,0.04);
+}
+
+.immunity-box {
+
+    background: rgba(139,92,246,0.04);
+}
+
+.effect-list {
+
+    display: flex;
+
+    flex-wrap: wrap;
+
+    gap: 6px;
+}
+
+.effect-pill {
+
+    padding: 5px 8px;
+
+    border-radius: 7px;
+
+    background: rgba(255,255,255,0.05);
+
+    color: var(--muted);
+
+    font-size: 10px;
+
+    text-transform: capitalize;
+}
+
+
+/* =========================================================
+   SPECIES
+========================================================= */
+
+.description-box {
+
+    padding: 17px;
+
+    border-radius: 13px;
+
+    border: 1px solid var(--border);
+
+    background: rgba(255,255,255,0.025);
+
+    margin-bottom: 18px;
+}
+
+.description-box p {
+
+    color: var(--muted);
+
+    font-size: 13px;
+
+    line-height: 1.8;
+}
+
+.species-grid {
+
+    display: grid;
+
+    grid-template-columns:
+        repeat(4, 1fr);
+
+    gap: 9px;
+}
+
+.species-item {
+
+    padding: 14px;
+
+    border: 1px solid var(--border);
+
+    border-radius: 12px;
+
+    background: rgba(255,255,255,0.025);
+}
+
+.species-item span {
+
+    display: block;
+
+    color: var(--dark-muted);
+
+    font-size: 8px;
+
+    letter-spacing: 1px;
+}
+
+.species-item strong {
+
+    display: block;
+
+    margin-top: 5px;
+
+    font-size: 12px;
+
+    text-transform: capitalize;
+
+    overflow-wrap: anywhere;
+}
+
+
+/* =========================================================
+   EVOLUTION
+========================================================= */
+
+.evolution-chain {
+
+    min-height: 130px;
+
+    display: flex;
+
+    align-items: center;
+
+    justify-content: center;
+
+    gap: 10px;
+
+    flex-wrap: wrap;
+}
+
+.evolution-node {
+
+    width: 120px;
+
+    padding: 10px;
+
+    text-align: center;
+
+    border: 1px solid var(--border);
+
+    border-radius: 15px;
+
+    background: rgba(255,255,255,0.025);
+
+    transition: 0.25s;
+}
+
+.evolution-node:hover {
+
+    transform: translateY(-5px);
+
+    border-color: rgba(57,215,255,0.3);
+}
+
+.evolution-node img {
+
+    width: 75px;
+    height: 75px;
+
+    object-fit: contain;
+}
+
+.evolution-node strong {
+
+    display: block;
+
+    font-size: 11px;
+
+    text-transform: capitalize;
+}
+
+.evolution-arrow {
+
+    color: var(--cyan);
+
+    font-size: 20px;
+}
+
+
+/* =========================================================
+   TWO COLUMNS
+========================================================= */
+
+.two-column-section {
+
+    display: grid;
+
+    grid-template-columns: 1fr 1fr;
+
+    gap: 18px;
+
+    margin-top: 18px;
+}
+
+.side-card {
+
+    padding: 20px;
+
+    min-height: 250px;
+}
+
+.side-header {
+
+    display: flex;
+
+    justify-content: space-between;
+
+    align-items: center;
+
+    margin-bottom: 15px;
+}
+
+.side-header h2 {
+
+    font-size: 18px;
+}
+
+.side-header button {
+
+    border: 1px solid var(--border);
+
+    background: transparent;
+
+    color: var(--muted);
+
+    border-radius: 8px;
+
+    padding: 6px 9px;
+
+    font-size: 10px;
+
+    cursor: pointer;
+}
+
+.list-container {
+
+    display: flex;
+
+    flex-direction: column;
+
+    gap: 7px;
+}
+
+.list-item {
+
+    display: flex;
+
+    align-items: center;
+
+    justify-content: space-between;
+
+    padding: 9px 11px;
+
+    border-radius: 10px;
+
+    border: 1px solid var(--border);
+
+    background: rgba(255,255,255,0.02);
+
+    cursor: pointer;
+
+    transition: 0.2s;
+}
+
+.list-item:hover {
+
+    border-color: rgba(57,215,255,0.25);
+
+    background: var(--cyan-soft);
+}
+
+.list-item span {
+
+    color: var(--muted);
+
+    font-size: 12px;
+
+    text-transform: capitalize;
+}
+
+.list-item button {
+
+    border: none;
+
+    background: transparent;
+
+    color: var(--red);
+
+    cursor: pointer;
+}
+
+.no-data {
+
+    color: var(--dark-muted);
+
+    font-size: 12px;
+
+    text-align: center;
+
+    padding: 30px 10px;
+}
+
+
+/* =========================================================
+   COMPARE
+========================================================= */
+
+.compare-search {
+
+    display: flex;
+
+    gap: 8px;
+
+    margin-bottom: 20px;
+}
+
+.compare-search input {
+
+    flex: 1;
+
+    padding: 12px;
+
+    border-radius: 10px;
+
+    border: 1px solid var(--border);
+
+    background: rgba(255,255,255,0.03);
+
+    color: white;
+
+    outline: none;
+}
+
+.compare-search button {
+
+    padding: 12px 17px;
+
+    border: none;
+
+    border-radius: 10px;
+
+    background: var(--cyan);
+
+    color: #031018;
+
+    font-weight: 800;
+
+    cursor: pointer;
+}
+
+.compare-table {
+
+    width: 100%;
+
+    border-collapse: collapse;
+
+    overflow: hidden;
+}
+
+.compare-table th,
+.compare-table td {
+
+    padding: 11px;
+
+    border-bottom: 1px solid var(--border);
+
+    text-align: center;
+
+    font-size: 11px;
+}
+
+.compare-table th {
+
+    color: var(--cyan);
+
+    font-size: 10px;
+
+    text-transform: uppercase;
+}
+
+.compare-table td:first-child {
+
+    color: var(--muted);
+
+    text-transform: uppercase;
+}
+
+
+/* =========================================================
+   API
+========================================================= */
+
+#apiResponse {
+
+    max-height: 500px;
+
+    overflow: auto;
+
+    padding: 18px;
+
+    border-radius: 13px;
+
+    background: #03050b;
+
+    border: 1px solid var(--border);
+
+    color: #8be9fd;
+
+    font-size: 11px;
+
+    line-height: 1.7;
+
+    white-space: pre-wrap;
+
+    word-break: break-word;
+}
+
+
+/* =========================================================
+   MINI DASHBOARD
+========================================================= */
+
+.mini-dashboard {
+
+    display: grid;
+
+    grid-template-columns:
+        repeat(4,1fr);
+
+    gap: 10px;
+
+    margin: 25px 0;
+}
+
+.mini-stat {
+
+    padding: 17px;
+
+    border: 1px solid var(--border);
+
+    border-radius: 14px;
+
+    background: rgba(255,255,255,0.025);
+
+    text-align: center;
+}
+
+.mini-stat span {
+
+    display: block;
+
+    color: var(--dark-muted);
+
+    font-size: 8px;
+
+    letter-spacing: 1px;
+}
+
+.mini-stat strong {
+
+    display: block;
+
+    margin-top: 5px;
+
+    color: var(--cyan);
+
+    font-size: 17px;
+}
+
+
+/* =========================================================
+   FOOTER
+========================================================= */
+
+footer {
+
+    margin-top: 40px;
+
+    padding: 35px 6%;
+
+    border-top: 1px solid var(--border);
+
+    display: flex;
+
+    align-items: center;
+
+    justify-content: space-between;
+
+    gap: 20px;
+
+    color: var(--muted);
+
+    font-size: 11px;
+}
+
+.footer-brand {
+
+    display: flex;
+
+    flex-direction: column;
+}
+
+.footer-brand strong {
+
+    color: var(--text);
+
+    letter-spacing: 2px;
+}
+
+.footer-brand span {
+
+    color: var(--dark-muted);
+
+}
+
+
+/* =========================================================
+   UTILITY
+========================================================= */
+
+.hidden {
+
+    display: none !important;
+}
+
+
+/* =========================================================
+   RESPONSIVE
+========================================================= */
+
+@media (max-width: 950px) {
+
+    .main-grid {
+
+        grid-template-columns: 1fr;
+    }
+
+    .species-grid {
+
+        grid-template-columns:
+            repeat(2,1fr);
+    }
+
+    .effectiveness-grid {
+
+        grid-template-columns: 1fr;
+    }
+}
+
+
+@media (max-width: 650px) {
+
+    .top-header {
+
+        padding: 14px 4%;
+
+    }
+
+    .api-status {
+
+        display: none;
+    }
+
+    .container {
+
+        width: 94%;
+    }
+
+    .hero {
+
+        padding-top: 45px;
+    }
+
+    .hero h2 {
+
+        font-size: 36px;
+    }
+
+    .search-box {
+
+        flex-direction: column;
+
+        align-items: stretch;
+
+        padding: 8px;
+    }
+
+    .search-icon {
+
+        display: none;
+    }
+
+    .search-button {
+
+        width: 100%;
+    }
+
+    .quick-search {
+
+        justify-content: center;
+    }
+
+    .toolbar {
+
+        justify-content: center;
+    }
+
+    .pokemon-visual {
+
+        height: 280px;
+    }
+
+    .pokemon-visual img {
+
+        width: 220px;
+        height: 220px;
+    }
+
+    .analytics-grid {
+
+        grid-template-columns:
+            repeat(2,1fr);
+    }
+
+    .species-grid {
+
+        grid-template-columns: 1fr;
+    }
+
+    .two-column-section {
+
+        grid-template-columns: 1fr;
+    }
+
+    .mini-dashboard {
+
+        grid-template-columns:
+            repeat(2,1fr);
+    }
+
+    footer {
+
+        flex-direction: column;
+
+        text-align: center;
+    }
+}
+
+
+@media (max-width: 430px) {
+
+    .pokemon-basic-grid {
+
+        grid-template-columns: 1fr;
+    }
+
+    .basic-item {
+
+        border-right: none;
+
+        border-bottom: 1px solid var(--border);
+    }
+
+    .basic-item:last-child {
+
+        border-bottom: none;
+    }
+
+    .stat-row {
+
+        grid-template-columns:
+            70px 1fr 35px;
+    }
+
+    .radar-chart {
+
+        width: 240px;
+    }
+
+    .compare-search {
+
+        flex-direction: column;
+    }
+}
